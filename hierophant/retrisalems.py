@@ -3,7 +3,7 @@ def solve(L, n, coverage):
     coverage = sorted(coverage, key=lambda x: (x[0], -x[1]))
     facade_coverer = [coverage[0]]
 
-    if(coverage[0][0] == 1 and coverage[0][1] == L):
+    if(coverage[0][0] == 1 and coverage[0][1] == L): #if the first item in array (first person) can already cover everything
         return n - 1
     if(coverage[0][0] != 1): #if there's no person who can cover first lot
         return "'Salem's Lot is doomed."
@@ -17,7 +17,7 @@ def solve(L, n, coverage):
                 else:
                     return "'Salem's Lot is doomed."
         
-        if(facade_coverer[len(facade_coverer)-1][1] != L):
+        if(facade_coverer[len(facade_coverer)-1][1] != L): #if there's no person who can cover last lot
             return "'Salem's Lot is doomed."
         
         for i in range(1, len(facade_coverer)):
