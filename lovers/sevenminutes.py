@@ -1,6 +1,7 @@
 import re
 import heapq
 from heapq import heapify, heappop, heappush
+import sys
 
 def sum_all(n,num_list):
     counter = 0
@@ -22,16 +23,28 @@ def sum_all(n,num_list):
 
 
 # str = 'I think I like eating soup because soup is the best thing to like eating.'.lower()
-str = input().lower()
-str = re.findall(r'\w+', str)
 
-str2 = set(str)
-num_list = []
+lines = []
+while True:
+    try:
+        line = input()
+        if line:
+            lines.append(line)
+        else:
+            break
+    except EOFError:
+        break
+        
 
-for word in str2 : 
-#         print('Frequency of ', word , 'is :', str.count(word))
-        num_list.append(str.count(word))
+text = ''.join(lines)
+text = re.findall(r'\w+', text) #removes all punctuations and splits the string per word
+print(text)
+temp = set(text) #get unique words
+frequency = []
+
+for word in temp : 
+        frequency.append(text.count(word)) #initalize array of frequencies
     
-# print(num_list)
+print(frequency)
 # num_list = [2,1,2,2,2,1,1,1,1,1,1]
-print(sum_all(len(num_list), num_list))
+print(sum_all(len(frequency), frequency))
