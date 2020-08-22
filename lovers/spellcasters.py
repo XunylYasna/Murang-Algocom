@@ -1,16 +1,19 @@
 import math
 
-def solve(a,T):
-    
-    # if a == 0:
-    #     return "Pat is the Best Tunnel Master!"
+def headache(a,n):
+    return a * math.sin(n) + a * n
 
-	# TODO: Compute and return answer here
+def solve(a,T):
+
+    if(a == 0):
+        return "Pat is the Best Tunnel Master!"
+    
     lo = 0
-    hi = 10e+305
+    hi = 10**9
     while lo < hi:
         middle = lo + (hi - lo)//2
-        h = a * math.sin(middle) + a * middle
+        h = headache(a,middle)
+        
         if h == T:
             return int(middle)
         elif h < T:
@@ -18,9 +21,8 @@ def solve(a,T):
         else:
             hi = middle
 
-    if(middle >= 10**10 - 1):
-        return "Pat is the Best Tunnel Master!"
-    return int(middle)
+    
+    return int(lo-1)
 
 a, Q = list(map(int,input().strip().split(" "))) # a is constant
 T = []
