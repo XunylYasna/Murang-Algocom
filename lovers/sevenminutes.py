@@ -6,17 +6,17 @@ from heapq import heapify, heappop, heappush
 def sum_all(n,num_list):
     counter = 0
     
-    heapq.heapify(num_list)
+
+    heapq.heapify(num_list) #sort 
+
     while len(num_list) > 1:
         
         front_num = heappop(num_list)
         next_num = heappop(num_list)
 
         cur_sum = front_num + next_num
-#         print(cur_sum//2)
-        counter = counter + cur_sum//2
+        counter = counter + min(front_num,next_num)
         heappush(num_list, cur_sum)
-#         min_cost += cur_sum
 
     return counter + sum(num_list)
 
@@ -44,7 +44,7 @@ str2 = set(str)
 num_list = []
 
 for word in str2 : 
-#         print('Frequency of ', word , 'is :', str.count(word))
+        # print('Frequency of ', word , 'is :', str.count(word))
         num_list.append(str.count(word))
     
 # print(num_list)
