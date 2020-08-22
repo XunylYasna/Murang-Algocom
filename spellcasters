@@ -1,0 +1,25 @@
+import math
+
+def solve(a,T):
+    hi = 1e9
+    lo = 0
+
+    if a == 0:
+        return "Pat is the Best Tunnel Master!"
+
+    while lo < hi:
+        mid = lo + (hi - lo) // 2
+        H = (a*math.sin(mid) + a*mid)
+
+        if H > T:
+            hi = mid
+        else:
+            lo = mid + 1
+ 
+    return int(lo - 1)
+
+a, Q = list(map(int,input().strip().split(" ")))
+
+for i in range(Q):
+    T = int(input())
+    print("{}".format(solve(a,T)))
