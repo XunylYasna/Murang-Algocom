@@ -1,7 +1,7 @@
 import math
 
 def solve(a,T):
-    hi = 1e9
+    hi = int(1e9)
     lo = 0
 
     if a == 0:
@@ -16,7 +16,7 @@ def solve(a,T):
         else:
             lo = mid + 1
  
-    return int(lo - 1)
+    return (lo - 1)
 
 a, Q = list(map(int,input().strip().split(" ")))
 
