@@ -1,6 +1,6 @@
 MOD = int(1e9) + 7
 
-memoization = [[[-1 for k in range(501)] for j in range(501)] for i in range(21)]
+memoization = [[[False for k in range(21)] for j in range(501)] for i in range(501)]
 portalBoard = [[False for i in range(501)] for j in range(501)]
 row = 0
 col = 0
@@ -19,8 +19,8 @@ def recursion(r, c, k):
         return 1
 
     # memoization
-    if memoization[row][col][k] != -1:
-        return memoization[row][col][k]
+    if memoization[r][c][k]:
+        return memoization[r][c][k]
 
     # else
     else:
@@ -28,16 +28,16 @@ def recursion(r, c, k):
         if portalBoard[r][c] and k > 0:
             destination = portalBoard[r][c]
             memoization[r][c][k] = (
-                recursion(destination[0], destination[1], k - 1) % MOD
-                + recursion(r + 1, c + 1, k) % MOD
-                + recursion(r + 1, c - 1, k) % MOD
-            )
+                recursion(destination[0], destination[1], k - 1)
+                + recursion(r + 1, c + 1, k)
+                + recursion(r + 1, c - 1, k)
+            ) % MOD
             return memoization[r][c][k]
         # if the current position is not a portal
         else:
             memoization[r][c][k] = (
-                recursion(r + 1, c + 1, k) % MOD + recursion(r + 1, c - 1, k) % MOD
-            )
+                recursion(r + 1, c + 1, k) + recursion(r + 1, c - 1, k)
+            ) % MOD
             return memoization[r][c][k]
 
 
