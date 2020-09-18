@@ -8,7 +8,7 @@ for i in range(MAX):
     if i < n:
         dp[i] = a
     else:
-        dp[i] = dp[i-n] + dp[i-n+1] % MOD
+        dp[i] = (dp[i-n] + dp[i-n+1]) % MOD
 
 outs = []
 for i in range(Q):
