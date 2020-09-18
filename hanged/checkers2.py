@@ -7,10 +7,6 @@ col = 0
 
 
 def recursion(r, c, k):
-    # memoization
-    if memoization[row][col][k] > -1:
-        return memoization[row][col][k]
-
     # bounds
     if c > col:
         return 0
@@ -22,11 +18,14 @@ def recursion(r, c, k):
     if r == row:
         return 1
 
+    # memoization
+    if memoization[row][col][k] != -1:
+        return memoization[row][col][k]
+
     # else
     else:
         # if the current position is a portal and the checker can travel
-        if portalBoard[r][c] != False and k > 0:
-            print("portal")
+        if portalBoard[r][c] and k > 0:
             destination = portalBoard[r][c]
             memoization[r][c][k] = (
                 recursion(destination[0], destination[1], k - 1) % MOD
@@ -51,4 +50,5 @@ for i in range(p):
     portalBoard[srR][srC] = [dsR, dsC]
     portalBoard[dsR][dsC] = [srR, srC]
 
-print(recursion(r, c, k))
+
+print(recursion(rstart, cstart, k))
