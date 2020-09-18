@@ -9,7 +9,7 @@ hasPortal = [502][502]
 pair<int,int> portals[502][502]
 dp = [502][502][22]
 
-long long solve(int row,int col, int k){
+def solve(int row,int col, int k):
 	if(row >= 1 && row <= r && col >= 1 && col <= c){
 		if(dp[row][col][k] > -1):
 			return dp[row][col][k]
@@ -27,7 +27,6 @@ long long solve(int row,int col, int k){
     else
 		return 0;
 		
-}
 
 
 # 	int p,k,rs,cs,rpsource,cpsource,rdest,cdest;
